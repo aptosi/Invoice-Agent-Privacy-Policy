@@ -1,88 +1,57 @@
-# Invoice Agent privacy policy 
+# Aptosi Invoice Agent Privacy Policy
 
-Privacy Policy for Aptosi Invoice Agent
+**Document Creation** 2025-07-01
+**Last Updated:** 2025-10-20
 
-Document Creation Date: July 1, 2025
+This privacy policy ("Policy") explains how Aptosi, Inc. ("we," "us," or "our") collects, uses, and protects your information when you use the Aptosi Invoice Agent Chrome Extension (the "Service").
 
-Last Updated: October 14, 2025
+## Information We Collect
 
-Thank you for choosing the Aptosi Invoice Agent ("the Agent"). This Privacy Policy is designed to help you understand how we collect, use, and safeguard the information you provide when using our Chrome Browser Extension Agent. Your privacy is important to us, and we are committed to protecting it.
+When you use the Service, we collect the following information:
 
-This policy specifically covers the Aptosi Invoice Agent and may differ from the privacy policy for our main website or other services.
+1.  **Google User Info:** When you authenticate using your Google account, we collect your name, email address, and profile picture. This is used to identify you and personalize your experience.
+2.  **User-Uploaded Data:** We collect and store the vendor master file (e.g., `vendors.csv`) that you explicitly upload through the extension's options page. This file is stored in your browser's local storage and is also sent to our secure backend to perform matching.
+3.  **Email & Attachment Data:** To perform its core function, the Service scans your emails. This includes:
+    * **Email Metadata:** Subject, sender, date, and email ID of emails identified as potential invoices.
+    * **Extracted Text:** When you open an email, we scan the email body and the text content of attachments (such as PDFs, DOCX, and CSVs) to find payment-related information (e.g., IBAN, SWIFT, Beneficiary Name, Account Numbers).
+4.  **Analytics Data:** We automatically collect anonymized usage data. See the "Analytics" section below for details.
 
-Our Commitment to Your Privacy
+## How We Use Your Information
 
-The Aptosi Invoice Agent is designed with your privacy and security as a top priority. Our goal is to provide intelligent invoice verification with minimal data collection necessary to perform our service. We only access your data to provide and improve the service, and we do not sell your personal information to third parties.
+We use the information we collect solely to provide and improve the Service:
 
-What Information We Collect and Why
+* **To Authenticate You:** Your Google User Info is used to log you in and secure your account.
+* **To Verify Invoices:** Your **Uploaded Data** is used as the "source of truth." We compare the **Extracted Text** from your emails against this data to check for matches or mismatches.
+* **To Organize Your Inbox:** The Service uses the `gmail.modify` and `gmail.labels` permissions to create and apply labels (e.g., "Aptosi/Match", "Aptosi/Mismatch") to your emails based on the scan results.
+* **To Provide Scan History:** We send your **Email & Attachment Data** (metadata and extracted text) and the resulting scan status to our secure backend servers (hosted on Google Firestore at `firestore.googleapis.com` and our servers at `preprod.aptosi.com`). This allows us to provide you with a history of your scan results.
+* **To Improve the Service:** We use anonymized analytics to understand how the Service is used, identify bugs, and improve features.
 
-To provide our services, we need to access certain data from your Google account and your browser. We believe in transparency, so we have detailed what we collect and why in the table below.
+## Data Storage and Sharing
 
-```
-+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
-| Data We Collect                                    | How We Collect It                                  | Why We Collect It (Purpose)                        | How We Use It                                      |
-+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
-| Google User Information                            | When you authenticate the extension with your      | To identify you as a user, create your Aptosi      | We use this information to display your user       |
-| (e.g., name, email address, profile picture)       | Google account via OAuth.                          | account, and associate your account with your      | profile within the extension and to securely       |
-|                                                    |                                                    | Gmail data.                                        | link your account to the data we process.          |
-+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
-| Gmail Data & Permissions                           | By requesting permissions to your Gmail account,   | Core Functionality: To find, read, and analyze     | We read email content to extract key invoice       |
-| - Email content (headers, subjects, body,          | which you must grant. The extension automatically  | emails and attachments that are likely invoices.   | details (e.g., vendor name, invoice amount,        |
-|   attachments)                                     | scans your inbox for emails identified as          |                                                    | due date, bank details). Metadata is used to       |
-| - Email metadata (message IDs, thread IDs)         | invoices.                                          |                                                    | track processed emails and apply status labels.    |
-+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
-| Gmail Label & Send Permissions                     | By requesting permissions to your Gmail account,   | To organize your invoices and allow you to take    | We use these permissions to create and apply       |
-| (`gmail.labels`, `gmail.modify`, `gmail.send`)     | which you must grant.                              | action on them.                                    | labels (e.g., "Aptosi/Match", "Aptosi/Mismatch")   |
-|                                                    |                                                    |                                                    | to your emails. The `gmail.send` permission is     |
-|                                                    |                                                    |                                                    | used solely to allow you to forward processed      |
-|                                                    |                                                    |                                                    | invoices or related data from within the extension.|
-|                                                    |                                                    |                                                    | **We never send emails without your direct action.**|
-+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
-| Extracted Invoice & Vendor Data                    | Automatically, by scanning the content of emails   | To verify invoice details against your list of     | This extracted data is compared against your       |
-| (e.g., payment details, amounts, dates, vendor     | and attachments identified as invoices.            | approved vendors.                                  | vendor records to determine a "Match" or           |
-| names)                                             |                                                    |                                                    | "Mismatch" status. This information is then        |
-|                                                    |                                                    |                                                    | stored in our secure database (Firebase) to keep   |
-|                                                    |                                                    |                                                    | a record of the verification.                      |
-+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
-| Anonymous Usage & Analytics Data                   | Through integration with Google Analytics 4.       | To understand how users interact with the          | This data is aggregated and anonymized. We use     |
-| (e.g., feature usage, button clicks, performance   |                                                    | extension, identify bugs, and improve our product. | it to make data-driven decisions about new         |
-| metrics, IP address, browser type)                 |                                                    |                                                    | features, performance improvements, and user       |
-|                                                    |                                                    |                                                    | experience enhancements.                           |
-+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
-| Local Extension Data & Settings                    | Through the `chrome.storage` API, which stores     | To store your settings and cache data for faster   | We store verification results locally to instantly |
-| (e.g., user preferences, cached results)           | data locally in your browser.                      | performance and to reduce redundant processing.    | display status badges when you view your inbox,    |
-|                                                    |                                                    |                                                    | improving the user experience and minimizing API   |
-|                                                    |                                                    |                                                    | calls.                                             |
-+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
-```
+We are committed to protecting your data.
 
-Third-Party Services
+* **We do not share or sell your personal information or email data with any third parties** for marketing or advertising purposes.
+* Your OAuth tokens and vendor master file are stored locally and securely using the `chrome.storage` API.
+* Data sent to our backend (as described above) is transmitted securely over HTTPS and stored in a private, access-controlled database.
 
-We utilize the following third-party services to provide the functionality of the Agent:
+## Analytics
 
-** Google APIs (Gmail & OAuth): We use Google's APIs to authenticate you and access your Gmail data based on the permissions you grant. All data accessed via these APIs is handled in accordance with the Google API Services User Data Policy, including the Limited Use requirements. [https://developers.google.com/terms/api-services-user-data-policy]
+We use Google Analytics to collect anonymized data about how you interact with the Service. This includes events like "extension installed," "invoice scanned," or "match found." We **do not** send any part of your email content, attachment data, or personal information to Google Analytics. This data is used only to help us understand extension usage and improve performance. You may opt-out of this data collection by disabling or uninstalling the extension.
 
-** Firebase (by Google): We use Firebase for secure user authentication and as a cloud database (Firestore) to store information about processed invoices. You can learn more in the Firebase Privacy and Security documentation. [https://firebase.google.com/support/privacy]
+## Limited Use Policy
 
-**Google Analytics: We use Google Analytics to collect anonymous usage statistics to help us improve the Agent. For more information, please review Google's Privacy Policy. [https://policies.google.com/privacy]
+Aptosi Invoice Agent's use and transfer of information received from Google APIs will adhere to the **Google API Services User Data Policy**, including the **Limited Use requirements**.
 
-Data Security
+Information received from Google APIs (such as your email content) is:
+* Only used to provide or improve the user-facing features of the extension (i.e., scanning for invoice data and applying organizational labels).
+* Not transferred to others unless necessary to provide or improve these features, comply with applicable laws, or as part of a merger/acquisition.
+* Not used for serving advertisements.
+* Not read by humans, unless we have your affirmative agreement for specific messages, it is necessary for security purposes (like investigating abuse), to comply with applicable laws, or for internal operations (and even then, the data will be aggregated and anonymized).
 
-We implement a variety of security measures to maintain the safety of your personal information. Your data is transmitted over secure SSL channels, and our database is protected by Firebase security rules. We do not store your Google password. Access to your data is strictly limited to the permissions you grant.
+## Changes to This Policy
 
-Data Retention
+We may update this Policy from time to time. We will notify you of any changes by posting the new Policy on this page.
 
-We retain the data we collect for as long as necessary to provide the service and for legitimate business purposes. Anonymized usage data may be kept indefinitely for statistical analysis. You can request the deletion of your account and associated data by contacting us.
+## Contact Us
 
-Your Rights and Choices
-
-You can revoke the Agent's access to your Google Account at any time through your Google Account security settings. [https://myaccount.google.com/permissions] If you do so, the Agent will no longer be able to access your Gmail data. You can also uninstall the Agent from your browser at any time.
-
-Changes to This Privacy Policy
-
-We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. By using the Aptosi Invoice Agent, you agree to the terms of this privacy policy.
-
-Contact Us:
-
-If you have any questions about this privacy policy, please contact us through dev@aptosi.com 
-
+If you have any questions about this Privacy Policy, please contact us at [Your Support Email Address].
