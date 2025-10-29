@@ -54,4 +54,4 @@ We may update this Policy from time to time. We will notify you of any changes b
 
 ## Contact Us
 
-If you have any questions about this Privacy Policy, please contact us at [Your Support Email Address].
+If you have any questions about this Privacy Policy, please contact us at dev {{at}} aptosi {{dot}} com 
